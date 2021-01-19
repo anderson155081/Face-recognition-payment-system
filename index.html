@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<title>Food Order</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
+.w3-bar-block .w3-bar-item {padding:20px}
+ul {list-style-type: none;}
+.btn {
+  background-color: white;
+  font-size: 12px;
+  border-radius: 50%;
+}
+.img {
+    float: middle;
+    width:  200px;
+    height: 250px;
+    background-size: cover;
+}
+
+.btn:hover{background-color: #e7e7e7;}
+</style>
+<body>
+
+<!-- Top menu -->
+<div class="w3-top">
+  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+    <div class="w3-center w3-padding-16">
+      <h1>Food Order(Payby face)</h1>
+
+<!--       <button class="w3-btn w3-medium w3-black fa fa-address-card" onclick="signup()">&nbsp;&nbsp;SignUp</button> -->
+      <button class="w3-btn w3-medium w3-sand fa fa-cart-plus w3-middle" onclick="list()">&nbsp;&nbsp;Shopping Car</button>
+
+      <button class="w3-button w3-ripple w3-red w3-tiny w3-right" onclick="register()"><i class="fas fa-user-plus fa-2x"></i>&nbsp;註冊</button>
+      <button class="w3-button w3-ripple w3-purple w3-tiny w3-right" onclick="deposit()"><i class="far fa-plus-square fa-2x"></i>&nbsp;儲值</button>
+
+    </div>
+  </div>
+  <div id="example"></div>
+</div>
+  
+<!-- !PAGE CONTENT! -->
+<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+
+  <!-- First Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+    <div class="w3-quarter">
+      <img class="img" src="img/hambu.jpg" alt="hambuger" style="width:190px">
+      <p>
+        <h3>Hambuger</h3>
+        <button class="w3-button w3-small w3-red fa fa-plus" id="hambuger" onclick="add(event)">&nbsp;&nbsp;Add</button>
+        <button class="w3-button w3-small w3-dark-grey fa fa-times" id="hambuger" onclick="del(event)">&nbsp;&nbsp;Delete</button>
+      </p>
+    </div>
+    <div class="w3-quarter">
+      <img class="img" src="img/fries.jpg" alt="franch-fry" style="width:190px">
+      <p>
+        <h3>Fries</h3>
+        <button class="w3-button w3-small w3-red fa fa-plus" id="franch-fry" onclick="add(event)">&nbsp;&nbsp;Add</button>
+        <button class="w3-button w3-small w3-dark-grey fa fa-times" id="franch-fry" onclick="del(event)">&nbsp;&nbsp;Delete</button>
+      </p>
+    </div>
+    <div class="w3-quarter">
+      <img class="img" src="img/sandwi.jpg" alt="sandwich" style="width:100%">
+      <p>
+        <h3>SandWich</h3>
+        <button class="w3-button w3-small w3-red fa fa-plus" id="sandwich" onclick="add(event)">&nbsp;&nbsp;Add</button>
+        <button class="w3-button w3-small w3-dark-grey fa fa-times" id="sandwich" onclick="del(event)">&nbsp;&nbsp;Delete</button>
+      </p>
+    </div>
+    <div class="w3-quarter">
+      <img class="img" src="img/black.png" alt="black-tea" style="width:100%">
+      <p>
+        <h3>Black Tea</h3>
+        <button class="w3-button w3-small w3-red fa fa-plus" id="black-tea" onclick="add(event)">&nbsp;&nbsp;Add</button>
+        <button class="w3-button w3-small w3-dark-grey fa fa-times" id="black-tea" onclick="del(event)">&nbsp;&nbsp;Delete</button>
+      </p>
+    </div>
+  </div>
+
+  <p id="demo"></p>
+  
+  <!-- Second Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+    <div class="w3-quarter">
+      <img class="img" src="img/chicken_nuggets.jpg" alt="chicken_nuggets" style="width:190px">
+      <p>
+        <h3>chicken_nuggets</h3>
+        <button class="w3-button w3-small w3-red fa fa-plus" id="chicken_nuggets" onclick="add(event)">&nbsp;&nbsp;Add</button>
+        <button class="w3-button w3-small w3-dark-grey fa fa-times" id="chicken_nuggets" onclick="del(event)">&nbsp;&nbsp;Delete</button>
+      </p>
+    </div>
+    <div class="w3-quarter">
+      <img class="img" src="img/salad.jpg" alt="Salad" style="width:100%">
+      <p>
+        <h3>salad</h3>
+        <button class="w3-button w3-small w3-red fa fa-plus" id="salad" onclick="add(event)">&nbsp;&nbsp;Add</button>
+        <button class="w3-button w3-small w3-dark-grey fa fa-times" id="salad" onclick="del(event)">&nbsp;&nbsp;Delete</button>
+      </p>
+    </div>
+    <div class="w3-quarter">
+      <img class="img" src="img/steak.jpg" alt="Steak" style="width:100%">
+      <p>
+        <h3>Steak</h3>
+        <button class="w3-button w3-small w3-red fa fa-plus" id="Steak" onclick="add(event)">&nbsp;&nbsp;Add</button>
+        <button class="w3-button w3-small w3-dark-grey fa fa-times" id="Steak" onclick="del(event)">&nbsp;&nbsp;Delete</button>
+      </p>
+    </div>
+    <div class="w3-quarter">
+      <img class="img" src="img/cocktail.jpg" alt="cocktail" style="width:100%">
+      <p>
+        <h3>Cocktail</h3>
+        <button class="w3-button w3-small w3-red fa fa-plus" id="cocktail" onclick="add(event)">&nbsp;&nbsp;Add</button>
+        <button class="w3-button w3-small w3-dark-grey fa fa-times" id="cocktail" onclick="del(event)">&nbsp;&nbsp;Delete</button>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<script>
+const { ipcRenderer } = require('electron')
+
+var cart = []
+
+var collectionRepeat = function(box, key){
+    var counter = {}
+  
+    box.forEach(function(x) { 
+        counter[x] = (counter[x] || 0) + 1
+    });
+  
+    var val = counter[key]
+ 
+    if (key === undefined) {
+        return counter;
+    }
+  
+    return (val) === undefined ? 0 : val
+}
+
+var amountPrice = function(category, amount){
+  switch(category){
+    case 'hambuger':
+      return 50 * amount
+      break
+    case 'franch-fry':
+      return 40 * amount
+      break
+    case 'sandwich':
+      return 35 * amount
+      break
+    case 'salad':
+      return 60 * amount
+      break
+    case 'chicken_nuggets':
+      return 40 * amount
+      break
+    case 'black-tea':
+      return 20 * amount
+      break
+    case 'Steak':
+      return 100 * amount
+      break
+    case 'cocktail':
+      return 90 * amount
+      break
+    default: break
+  }
+}
+
+// function signup(){
+//   Swal.fire({
+//     title: 'SignUp',
+//     icon: 'question',
+//     html:`
+//     <div class="w3-container">
+//       <p>
+//         <label class="w3-text-blue"><b>First Name</b></label>
+//         <input class="w3-input w3-border" name="first" type="text" id="first">
+//       </p>
+//       <p>
+//         <label class="w3-text-blue"><b>Last Name</b></label>
+//         <input class="w3-input w3-border" name="last" type="text" id="last">
+//       </p>
+//       <p>
+//         <button class="w3-btn w3-blue" id="signup">Register</button>
+//       </p>
+//     </div>
+//     `,
+//     showCloseButton: true,
+//     showConfirmButton: false,
+//   })
+
+//   var f = document.getElementById('first').value
+//   var l = document.getElementById('last').value
+//   document.getElementById('signup').addEventListener('click', () => {
+//     let url = 'https://hexschool-tutorial.herokuapp.com/api/signup';
+//     fetch(url, {
+//       method: 'POST',
+//       // headers 加入 json 格式
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       // body 將 json 轉字串送出
+//       body: JSON.stringify({
+//         email: 'lovef1232e@hexschool.com',
+//         password: '12345678'
+//       })
+//     }).then((response) => {
+//         return response.json(); 
+//       }).then((jsonData) => {
+//         console.log(jsonData);
+//       }).catch((err) => {
+//         console.log('錯誤:', err);
+//     })
+//   })
+// }
+
+function list(){
+  Swal.fire({
+    title: 'Shopping List',
+    icon: 'info',
+    html: `
+    <table class="w3-table-all w3-centered w3-hoverable w3-card-4" id="table">
+      <tr>
+        <th>Food</th>
+        <th>Amount</th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+    </table>
+    `,
+    showCloseButton: true,
+    showCancelButton: true,
+    focusConfirm: false,
+    confirmButtonText: '<span class="fa fa-credit-card"></span>&nbsp;&nbsp;Pay',
+  }).then((result) => {
+    if(result.isConfirmed) {
+      if(cart.length != []){
+        ipcRenderer.send('send_name_totalprice', total)
+      }else{
+        Swal.fire({
+          title: 'Shopping List Is Empty',
+          text: 'Let Go To Buy Somethings',
+          icon: 'error',
+          timer: 1800
+        })
+      }
+    }
+  })
+
+  var count = collectionRepeat(cart)
+  var table = document.getElementById('table')
+  var dataHtml = ''
+  var sending = []
+  var total = 0
+
+  for(var key of Object.keys(count)){
+    total+=amountPrice(key, count[key])
+    dataHtml += `
+      <tr>
+        <td>${key}</td>
+        <td>${count[key]}</td>
+        <td>${amountPrice(key, count[key])}</td>
+        <td></td>
+      </tr>
+    `
+  }
+  dataHtml += `
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>${total}</td>
+    <tr>  
+    `
+  table.innerHTML += dataHtml
+}
+
+function add(e){
+  Swal.fire({
+    icon: 'success',
+    title: 'Add To Cart!',
+    timer: 1800
+  })
+  cart.push(e.target.id)
+}
+
+function del(e){
+  if(cart.length == 0)
+    return Swal.fire({
+      title: 'Shopping List Is Empty',
+      text: 'Let Go To Buy Somethings',
+      icon: 'error',
+      timer: 1800
+    })
+  Swal.fire({
+    icon: 'success',
+    title: 'Delete From Cart',
+    timer: 1800
+  })
+  if(cart.indexOf(e.target.id)>=1){
+    cart.splice(cart.indexOf(e.target.id), 1)
+  }else{
+    Swal.fire({
+      icon:'error',
+      title: 'There is already 0 is shopping car!',
+      timer:1800,
+    })
+  }
+};
+
+const pyshell=  require('python-shell');
+var remote = require('electron').remote; // Load remote compnent that contains the dialog dependency
+const fs = require('fs'); 
+
+
+function deposit(){
+  Swal.fire({
+    title: '請輸入儲值金額',
+    icon: 'info',
+    input: 'text',
+    showCloseButton: true,
+    showCancelButton: true,
+    focusConfirm: false,
+    confirmButtonText: '<span class="fa fa-credit-card"></span>&nbsp;&nbsp;Pay',
+  }).then((result) => {
+    if(result.value){
+      var test = result.value
+      ipcRenderer.send('take-cat-home-message', test,"yes")
+    }
+  });
+}
+function register(){
+  Swal.mixin({
+  input: 'text',
+  confirmButtonText: 'Next &rarr;',
+  showCancelButton: true,
+  progressSteps: ['1', '2','3','4']
+}).queue([
+  {
+    title: '請輸入英文姓名',
+  },
+  '輸入電話號碼',
+  '請輸入電子信箱',
+  '首次儲值金額',
+]).then((result) => {
+  if (result.value) {
+    const answers = JSON.stringify(result.value)
+    var test = result.value
+    Swal.fire({
+      title: 'All done!',
+      html: `
+        Your answers:
+        <pre><code>${answers}</code></pre>
+      `,
+      confirmButtonText: 'Lovely!',
+    }).then((result) => {
+       var reg = new pyshell.PythonShell('/Users/chi-an/Desktop/code/project/softnet/order/src/Senior-Project/register.py');
+       reg.send(test[0]);
+       reg.on('message', function(message){
+           console.log(message);
+       });
+       reg.end(function(err){
+           if(err){
+               throw err;
+           };
+           console.log('reg_cap_finish');
+       });
+       var regDB = new pyshell.PythonShell('/Users/chi-an/Desktop/code/project/softnet/order/src/registerDB.py');
+       regDB.send(test[0]);
+       regDB.send(test[1]);
+       regDB.send(test[2]);
+       regDB.send(test[3]);
+       regDB.on('message', function(message){
+           console.log(message);
+       });
+       regDB.end(function(err){
+           if(err){
+               throw err;
+           };
+           console.log('regDB_finished');
+       });
+  })
+  }
+})
+};
+
+</script>
+
+</body>
+</html>
